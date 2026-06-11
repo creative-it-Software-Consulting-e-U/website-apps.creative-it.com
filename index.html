@@ -3,410 +3,308 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apps — Creative IT</title>
-  <meta name="description" content="Software crafted by Creative IT. Explore our collection of apps built to solve real problems with elegant design.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#F7F4EF">
+  <title>Apps — creative-it</title>
+  <meta name="description" content="Focused tools by creative-it that solve real problems — GeoHook, AInvoiceMate, and FlowAgent.">
+  <link rel="canonical" href="https://apps.creative-it.com/">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta property="og:title" content="Apps — creative-it">
+  <meta property="og:description" content="Focused tools by creative-it that solve real problems — GeoHook, AInvoiceMate, and FlowAgent.">
+  <meta property="og:url" content="https://apps.creative-it.com/">
+  <meta property="og:image" content="https://www.creative-it.com/og-image.png">
   <style>
+    @font-face {
+      font-family: 'Newsreader';
+      src: url('fonts/newsreader-latin-wght-normal.woff2') format('woff2');
+      font-weight: 200 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Newsreader';
+      src: url('fonts/newsreader-latin-wght-italic.woff2') format('woff2');
+      font-weight: 200 800;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      src: url('fonts/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Sans';
+      src: url('fonts/ibm-plex-sans-latin-500-normal.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      src: url('fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
     :root {
-      --navy: #030520;
-      --surface: #0F1132;
-      --card: #0D1025;
-      --navy-light: #181B39;
-      --navy-mid: #24274C;
-      --border: rgba(255, 255, 255, 0.08);
-      --off-white: #F5F5F7;
-      --text-secondary: #B6BDE2;
-      --text-muted: #8F96BD;
-      --purple: #A163F1;
-      --indigo: #6363F1;
-      --cyan: #23F0C3;
-      --accent-emerald: #34d399;
-      --accent-amber: #fbbf24;
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --paper: #F7F4EF;
+      --ink: #1C1B1A;
+      --graphite: #5F5C55;
+      --rule: #DAD5CB;
+      --rubric: #B5371A;
+      --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+      --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
     }
 
     html {
-      scroll-behavior: smooth;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      color-scheme: light;
     }
 
     body {
-      font-family: var(--font-sans);
-      background: var(--navy);
-      color: var(--off-white);
-      line-height: 1.6;
-      overflow-x: hidden;
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
     }
 
-    /* ---- Scrollbar ---- */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--navy);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--navy-mid);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--navy-light);
-    }
+    ::selection { background: #F4D9D1; color: var(--ink); }
 
-    /* ---- Selection ---- */
-    ::selection {
-      background: var(--indigo);
-      color: white;
-    }
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-    /* ---- Focus states ---- */
-    :focus-visible {
-      outline: 2px solid var(--indigo);
-      outline-offset: 2px;
-    }
-
-    /* ---- Ambient background ---- */
-    .ambient {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .ambient::before {
-      content: '';
-      position: absolute;
-      width: 900px;
-      height: 900px;
-      top: -300px;
-      right: -200px;
-      background: radial-gradient(circle, rgba(161, 99, 241, 0.04) 0%, transparent 70%);
-      animation: drift 20s ease-in-out infinite alternate;
-    }
-    .ambient::after {
-      content: '';
-      position: absolute;
-      width: 700px;
-      height: 700px;
-      bottom: -100px;
-      left: -200px;
-      background: radial-gradient(circle, rgba(35, 240, 195, 0.03) 0%, transparent 70%);
-      animation: drift 25s ease-in-out infinite alternate-reverse;
-    }
-    @keyframes drift {
-      0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(80px, 40px) scale(1.1); }
-    }
-
-    /* ---- Grid texture overlay ---- */
-    .grid-texture {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(182, 189, 226, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(182, 189, 226, 0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 100%);
-    }
-
-    /* ---- Layout ---- */
     .container {
-      position: relative;
-      z-index: 1;
       max-width: 1120px;
       margin: 0 auto;
       padding: 0 2rem;
     }
 
+    .mono-label {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--graphite);
+    }
+
     /* ---- Nav ---- */
     nav {
-      position: relative;
-      z-index: 10;
-      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
     }
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 1.25rem 0;
     }
     .logo {
       display: flex;
       align-items: center;
+      gap: 0.65rem;
       text-decoration: none;
+      color: var(--ink);
     }
-    .logo img {
-      height: 3rem;
-      width: auto;
-    }
-    @media (min-width: 1024px) {
-      .logo img {
-        height: 3.5rem;
-      }
-    }
-    .nav-link {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      text-decoration: none;
-      letter-spacing: 0.02em;
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .nav-link:hover {
-      color: var(--off-white);
-    }
-
-    /* ---- Hero ---- */
-    .hero {
-      padding: 8rem 0 6rem;
-      text-align: center;
-    }
-    .hero-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--purple);
-      border: 1px solid rgba(99, 99, 241, 0.2);
-      border-radius: 100px;
-      padding: 0.4rem 1.2rem;
-      margin-bottom: 2.5rem;
-      background: rgba(99, 99, 241, 0.1);
-    }
-    .hero h1 {
-      font-family: var(--font-sans);
-      font-weight: 800;
-      font-size: clamp(2.8rem, 6vw, 4.8rem);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      color: var(--off-white);
-    }
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(135deg, #A163F1 0%, #6363F1 40%, #23F0C3 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: 1.15rem;
-      color: var(--text-secondary);
-      max-width: 520px;
-      margin: 0 auto;
-      line-height: 1.7;
-      font-weight: 400;
-    }
-
-    /* ---- Divider ---- */
-    .divider {
-      border: none;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
-      margin: 2rem 0;
-    }
-
-    /* ---- Apps section ---- */
-    .apps-section {
-      padding: 4rem 0 6rem;
-    }
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: 3rem;
-    }
-    .section-title {
-      font-family: var(--font-sans);
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .section-count {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    /* ---- App cards ---- */
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    .app-card {
-      position: relative;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03);
-      /* entrance animation */
-      opacity: 0;
-      transform: translateY(24px);
-      animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    .app-card:nth-child(1) { animation-delay: 0.15s; }
-    .app-card:nth-child(2) { animation-delay: 0.25s; }
-    .app-card:nth-child(3) { animation-delay: 0.35s; }
-    .app-card:nth-child(4) { animation-delay: 0.45s; }
-
-    @keyframes cardIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .app-card:hover {
-      border-color: rgba(255, 255, 255, 0.12);
-      transform: translateY(-4px);
-      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.03), 0 20px 60px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(99, 99, 241, 0.1);
-    }
-
-    .app-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      flex-shrink: 0;
-    }
-    .app-icon.purple  { background: rgba(161, 99, 241, 0.12); color: var(--purple); }
-    .app-icon.indigo  { background: rgba(99, 99, 241, 0.12); color: var(--indigo); }
-    .app-icon.emerald { background: rgba(52,211,153,0.12); color: var(--accent-emerald); }
-    .app-icon.amber   { background: rgba(251,191,36,0.12); color: var(--accent-amber); }
-
-    .app-icon-img {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      flex-shrink: 0;
-      object-fit: cover;
-    }
-
-    .app-name {
-      font-family: var(--font-sans);
-      font-size: 1.1rem;
-      font-weight: 600;
+    .logo img { height: 32px; width: auto; }
+    .logo-text {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 500;
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
-    .app-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      font-weight: 400;
-      flex-grow: 1;
-    }
-    .app-badge {
+    .logo-text .dot { color: var(--rubric); }
+    .logo-suffix {
+      font-family: var(--mono);
+      font-weight: 500;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--purple);
-      border: 1px solid rgba(99, 99, 241, 0.2);
-      border-radius: 100px;
-      padding: 0.3rem 0.9rem;
-      background: rgba(99, 99, 241, 0.1);
-      width: fit-content;
+      color: var(--graphite);
+      margin-left: 0.35rem;
     }
-    .app-link-row {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
+    .nav-link {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 0.8125rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--graphite);
+      text-decoration: none;
+      transition: color 0.15s ease;
     }
-    a.app-card:hover .app-link-row {
-      color: var(--cyan);
+    .nav-link:hover { color: var(--ink); }
+
+    /* ---- Hero ---- */
+    .hero {
+      padding: 6rem 0 4.5rem;
+      opacity: 0;
+      animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards;
     }
-    .app-link-row svg {
-      width: 14px;
-      height: 14px;
-      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    .hero .running-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
     }
-    a.app-card:hover .app-link-row svg {
-      transform: translateX(3px);
+    .hero .running-head::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      align-self: center;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      max-width: 18ch;
+      margin-bottom: 1.75rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--rubric);
+    }
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--graphite);
+      max-width: 54ch;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---- Apps as ruled rows ---- */
+    .apps-section { padding: 0 0 6rem; }
+    .app-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 1.5rem 2rem;
+      align-items: start;
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+    }
+    .app-row:last-of-type { border-bottom: 1px solid var(--rule); }
+    .app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 2px;
+      object-fit: cover;
+    }
+    .app-name {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.75rem;
+      letter-spacing: -0.005em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+      transition: color 0.15s ease;
+    }
+    a.app-row:hover .app-name { color: var(--rubric); }
+    .app-desc {
+      font-size: 0.9375rem;
+      color: var(--graphite);
+      max-width: 62ch;
+    }
+    .app-status {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding-top: 0.4rem;
+    }
+    .app-status.live { color: var(--rubric); }
+    .app-status.soon {
+      color: var(--graphite);
+      border: 1px solid var(--rule);
+      padding: 0.25rem 0.6rem;
     }
 
     /* ---- Footer ---- */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
-      margin-top: 2rem;
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0 3rem;
     }
     .footer-inner {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
     }
     .footer-left {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+      font-size: 0.875rem;
+      color: var(--graphite);
     }
-    .footer-left a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .footer-left a:hover {
-      color: var(--off-white);
-    }
+    .footer-left a { color: var(--graphite); }
+    .footer-left a:hover { color: var(--ink); }
     .footer-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
     }
     .footer-links a {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--graphite);
       text-decoration: none;
-      transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: color 0.15s ease;
     }
-    .footer-links a:hover {
-      color: var(--cyan);
+    .footer-links a:hover { color: var(--ink); }
+    .colophon {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: var(--graphite);
     }
 
-    /* ---- Responsive ---- */
     @media (max-width: 640px) {
-      .hero { padding: 5rem 0 4rem; }
-      .apps-grid { grid-template-columns: 1fr; }
-      .section-header { flex-direction: column; gap: 0.5rem; }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-links { justify-content: center; }
+      .hero { padding: 4rem 0 3rem; }
+      .app-row { grid-template-columns: auto 1fr; }
+      .app-status { grid-column: 2; padding-top: 0; }
+      .footer-inner { flex-direction: column; }
+      /* the footer repeats the main-site link */
+      .nav-link { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .hero { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <div class="ambient"></div>
-  <div class="grid-texture"></div>
-
   <nav>
     <div class="container">
       <div class="nav-inner">
         <a href="/" class="logo">
-          <picture>
-            <source srcset="logo-dark.webp" type="image/webp">
-            <img src="logo-dark.png" alt="Creative IT" width="1457" height="988" fetchpriority="high">
-          </picture>
+          <img src="logo-only.webp" alt="" width="504" height="548">
+          <span class="logo-text">creative-it<span class="dot">.</span></span>
+          <span class="logo-suffix">/ Apps</span>
         </a>
-        <a href="https://creative-it.com" class="nav-link">creative-it.com &nearr;</a>
+        <a href="https://www.creative-it.com/" class="nav-link">www.creative-it.com &rarr;</a>
       </div>
     </div>
   </nav>
@@ -414,52 +312,45 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div class="hero-label">Our App Collection</div>
-        <h1>Software crafted<br>with <em>intention</em></h1>
+        <div class="running-head"><span class="mono-label">Products</span></div>
+        <h1>Focused tools. Built to be <em>used</em>.</h1>
         <p class="hero-sub">
-          We build focused tools and applications that solve real problems
-          with clean design and thoughtful engineering.
+          Small, focused apps that solve real problems — built by the same
+          person and the same agents that build creative-it's client systems.
         </p>
       </div>
     </section>
 
-    <div class="container"><hr class="divider"></div>
-
     <section class="apps-section">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Apps</h2>
-        </div>
 
-        <div class="apps-grid">
-
-          <a href="https://geohook.creative-it.com" class="app-card">
-            <img src="geohook-icon.svg" alt="GeoHook" class="app-icon-img">
+        <a href="https://geohook.creative-it.com" class="app-row">
+          <img src="geohook-icon.svg" alt="" class="app-icon">
+          <div>
             <div class="app-name">GeoHook</div>
-            <div class="app-desc">Trigger webhooks automatically when you enter or exit locations. Connect your geofences to Home Assistant, IFTTT, n8n, or any custom API.</div>
-            <div class="app-link-row">
-              Open app
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-            </div>
-          </a>
+            <p class="app-desc">Trigger webhooks automatically when you enter or exit locations. Connect your geofences to Home Assistant, IFTTT, n8n, or any custom API.</p>
+          </div>
+          <span class="app-status live">Open app &rarr;</span>
+        </a>
 
-          <div class="app-card">
-            <img src="ainvoicemate-icon.png" alt="AInvoiceMate" class="app-icon-img">
+        <div class="app-row">
+          <img src="ainvoicemate-icon.png" alt="" class="app-icon">
+          <div>
             <div class="app-name">AInvoiceMate</div>
-            <div class="app-desc">AI-powered invoice processing for your accounting workflow. Scan invoices, extract data automatically, and export to sevDesk, DATEV, Google Sheets, and more.</div>
-            <div class="app-badge">Coming Soon</div>
+            <p class="app-desc">AI-powered invoice processing for your accounting workflow. Scan invoices, extract data automatically, and export to sevDesk, DATEV, Google Sheets, and more.</p>
           </div>
-
-          <div class="app-card">
-            <img src="flowagent-icon.png" alt="FlowAgent" class="app-icon-img">
-            <div class="app-name">FlowAgent</div>
-            <div class="app-desc">Automated bookkeeping and financial management built for Austrian tax law. AI-powered invoice processing, transaction tracking, and cash flow forecasting.</div>
-            <div class="app-badge">Coming Soon</div>
-          </div>
-
-          <!-- Add more apps here -->
-
+          <span class="app-status soon">Coming Soon</span>
         </div>
+
+        <div class="app-row">
+          <img src="flowagent-icon.png" alt="" class="app-icon">
+          <div>
+            <div class="app-name">FlowAgent</div>
+            <p class="app-desc">Automated bookkeeping and financial management built for Austrian tax law. AI-powered invoice processing, transaction tracking, and cash flow forecasting.</p>
+          </div>
+          <span class="app-status soon">Coming Soon</span>
+        </div>
+
       </div>
     </section>
   </main>
@@ -468,12 +359,13 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-left">
-          &copy; 2026 <a href="https://creative-it.com">Creative IT</a>. All rights reserved.
+          &copy; 2026 <a href="https://www.creative-it.com/">creative-it</a>. All rights reserved.
         </div>
         <div class="footer-links">
-          <a href="https://creative-it.com">Main Site</a>
-          <a href="https://creative-it.com/contact">Contact</a>
+          <a href="https://www.creative-it.com/">Main Site</a>
+          <a href="https://www.creative-it.com/contact/">Contact</a>
         </div>
+        <div class="colophon">Set in Newsreader &amp; IBM Plex. No tracking.</div>
       </div>
     </div>
   </footer>
